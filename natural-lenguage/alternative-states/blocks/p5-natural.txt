@@ -1,0 +1,23 @@
+Consider this domain description:
+
+"The "blocks" domain is a classic problem in Artificial Intelligence where we have a set of blocks that can be stacked and unstacked to form towers. The objective is to create a particular configuration of blocks by moving them around. The blocks can be picked up, put down, stacked on top of each other, or unstacked from each other.
+
+Available actions:
+The domain provides four actions: pick-up, put-down, stack, and unstack. The "pick-up" action allows the agent to pick up a block that is on the table and has no other block on top of it. The "put-down" action allows the agent to put a block that it is holding back onto the table. The "stack" action allows the agent to put a block that it is holding on top of another block that is clear. The "unstack" action allows the agent to remove a block from the top of another block that is clear.
+
+Restrictions over actions:
+The actions have preconditions and effects that restrict their execution. For example, the "pick-up" action can only be executed if the block to be picked up is clear, on the table, and the agent's hand is empty. Similarly, the "put-down" action can only be executed if the agent is holding a block, and the block to be put down is clear and on the table. The "stack" action can only be executed if the agent is holding a block, and the block to be stacked on is clear. Finally, the "unstack" action can only be executed if the block to be unstacked is on top of another block that is clear, and the agent's hand is empty. Additionally, there are some predicates that the actions need to respect, such as "clear" and "on," which ensure that the blocks are properly placed during the execution of the actions."
+
+
+And this problem associated to it: 
+
+"Objects:
+The problem instance defines four blocks b1, b2, b3, and b4.
+
+Initial state:
+The initial state of the problem instance describes the starting configuration of the blocks. The block b1 is on top of block b4, block b2 is on top of block b3, and block b3 is on top of block b1. Block b4 is on the table, and block b2 is clear. Block b1 is not clear because block b3 is on top of it.
+
+Goals:
+The goal of the problem instance is to rearrange the blocks such that block b1 is on top of block b3 and block b4 is on top of block b2."
+
+The resulting planning task is unsolvable due to an incomplete initial state description. Can you provide an alternative initial state in natural language from which the goals are achievable? That state must not include the goals directly. Be as concise as possible.

@@ -1,0 +1,53 @@
+(define (domain barman)
+  (:requirements :strips)
+  (:predicates
+    (ontable ?x)
+    (handempty ?h)
+    (holding ?h ?x)
+    (clean ?x)
+    (empty ?x)
+    (dispenses ?d ?i)
+    (shaker-empty-level ?s ?l)
+    (shaker-level ?s ?l)
+    (next ?l1 ?l2)
+    (cocktail-part1 ?c ?i)
+    (cocktail-part2 ?c ?i)
+    (contains ?x ?c)
+  )
+  (:action pickup
+    :parameters (?x ?h)
+    :precondition (and (ontable ?x) (handempty ?h))
+    :effect (and (not (ontable ?x)) (not (handempty ?h)) (holding ?h ?x))
+  )
+  (:action putdown
+    :parameters (?x ?h)
+    :precondition (holding ?h ?x)
+    :effect (and (ontable ?x) (handempty ?h) (not (holding ?h ?x))))
+  )
+  (:action pour-into-shaker
+    :parameters (?i ?s)
+    :precondition (and (holding left ?i) (ontable ?s) (shaker-empty-level ?s l0))
+    :effect (and (not (ontable ?i)) (not (handempty left)) (empty ?i) (shaker-level ?s l1) (not (shaker-empty-level ?s l0))))
+  )
+  (:action pour-from-shaker
+    :parameters (?s ?i)
+    :precondition (and (holding left ?s) (ontable ?i) (shaker-level ?s l2))
+    :effect (and (ontable ?i) (handempty left) (not (holding left ?s)) (empty ?s) (shaker-empty-level ?s l2)))
+  )
+  (:action dispense
+    :parameters (?d ?h ?l ?i)
+    :precondition (and (dispenses ?d ?i) (handempty ?h) (shaker-empty-level shaker1 ?l))
+    :effect (and (not (handempty ?h)) (not (shaker-empty-level shaker1 ?l)) (holding ?h ?i) (shaker-level shaker1 ?l1)))
+  )
+  (:action mix
+    :parameters (?s)
+    :precondition (and (holding left ?s) (clean ?s) (shaker-level ?s l2))
+    :effect (and (clean ?s) (shaker-empty-level ?s l0) (shaker-level ?s l0)))
+  )
+  (:action pour-shot
+    :parameters (?s)
+    :precondition (and (holding right ?s) (ontable shot1) (shaker-level ?s l2))
+    :effect (and (not (handempty right)) (not (ontable shot1)) (empty shot1) (contains shot1 ?s)))
+  )
+)
+

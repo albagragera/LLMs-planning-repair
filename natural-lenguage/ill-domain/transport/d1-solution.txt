@@ -1,0 +1,9 @@
+The transport problem involves vehicles and packages that need to be moved between locations. There are three actions: "Drive" to move a vehicle from one location to another, "Pick-up" to load a package onto a vehicle, and "Drop" to unload a package from a vehicle.
+
+To make the planning task solvable, the following additional effects can be added to the actions:
+
+    Drive: After the action is executed, the vehicle will be at the destination location.
+    Pick-up: After the action is executed, the package will be in the vehicle.
+    Drop: After the action is executed, the package will no longer be in the vehicle.
+
+With these additional effects, the planning task can be solved by finding a sequence of actions that moves the package from its initial location to the desired goal location.

@@ -1,0 +1,43 @@
+Consider this domain description:
+
+"The transport domain is a PDDL domain for modeling transportation logistics. The domain involves the movement of vehicles between locations to pick up and drop off packages. Vehicles have a limited carrying capacity, which is modeled using capacity numbers. The domain also considers the cost of transportation between locations.
+
+Available actions:
+There are three actions available in the transport domain: drive, pick-up, and drop. The drive action allows a vehicle to move from one location to another if there is a road connecting them. The pick-up action allows a vehicle to pick up a package at a location if the package is located there, and the vehicle has sufficient remaining capacity. The drop action allows a vehicle to drop off a package at a location if the package is in the vehicle, and the vehicle has sufficient remaining capacity.
+
+Restrictions over actions:
+The drive action is restricted to moving between locations connected by a road. The pick-up and drop actions are restricted by the capacity of the vehicle. The vehicle must have sufficient remaining capacity to pick up a package or drop off a package, as determined by the capacity number predicates. Additionally, the drop action requires that the package is located in the vehicle, and the pick-up action requires that the package is located at the pick-up location. Finally, all actions increase the total-cost function, which represents the cost of transportation."
+
+
+And this problem associated to it: 
+
+"Objects:
+        Four locations are defined as objects: city-loc-1, city-loc-2, city-loc-3, and city-loc-4.
+        Three packages are defined as objects: package-1, package-2, and package-3.
+        One truck is defined as an object: truck-1.
+        Five capacity numbers are defined as objects: capacity-0, capacity-1, capacity-2, capacity-3, and capacity-4.
+
+    Initial state:
+        The total-cost function is set to 0.
+        The capacities of the truck are initialized to capacity-2, meaning it has a capacity of 2.
+        The capacity-predecessor function is set to a chain of values from capacity-0 to capacity-4.
+        The road predicates are set up between different pairs of locations with their respective lengths, such that:
+            There is a road from city-loc-2 to city-loc-1 with a length of 18.
+            There is a road from city-loc-1 to city-loc-2 with a length of 18.
+            There is a road from city-loc-3 to city-loc-1 with a length of 48.
+            There is a road from city-loc-1 to city-loc-3 with a length of 48.
+            There is a road from city-loc-4 to city-loc-2 with a length of 45.
+        The initial locations of the packages and the truck are defined as follows:
+            Package-1 and package-2 are at city-loc-3.
+            Package-3 is at city-loc-1.
+            Truck-1 is at city-loc-4.
+        The truck's capacity is set to capacity-2.
+
+    Goals:
+        The goal of the problem is for all packages to be at city-loc-1:
+            Package-1 must be at city-loc-1.
+            Package-2 must be at city-loc-1.
+            Package-3 must be at city-loc-4"
+
+
+The resulting planning task is unsolvable due to an incomplete initial state description. Can you provide an alternative initial state in natural language from which the goals are achievable? That state must not include the goals directly. Be as concise as possible.

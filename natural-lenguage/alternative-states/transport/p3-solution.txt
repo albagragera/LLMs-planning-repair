@@ -1,0 +1,1 @@
+Package-1 is at city-loc-2, and package-2 is at city-loc-4. The truck is at city-loc-3, and its capacity is set to capacity-3. All other conditions remain the same as in the original initial state.

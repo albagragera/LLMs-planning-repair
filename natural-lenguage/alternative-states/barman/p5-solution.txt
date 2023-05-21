@@ -1,0 +1,13 @@
+Assuming the goal is to add a shot of a certain ingredient to each cocktail, an alternative initial state could be:
+
+    The barman is holding a container (such as a shaker or a dispenser) containing one of the required ingredients for each cocktail (ingredient1 for cocktail1, and ingredient3 for cocktail2).
+    The shaker1 object is clean and empty.
+    The shot1 object is clean and empty.
+    The shot2 object is clean and empty.
+    Both left and right hands are empty.
+    The shaker1 object has an empty level called "l0."
+    The shaker1 object has a level called "l0."
+    There are three levels called "l0," "l1," and "l2."
+    The dispensers dispense ingredients 1-5.
+
+With this initial state, the barman can perform a sequence of actions such as grasp the corresponding container, fill the shot glass with the ingredient from the dispenser, pour the shot into the shaker, and then add the shaker contents to the respective cocktail. This would lead to the achievement of the desired goals.

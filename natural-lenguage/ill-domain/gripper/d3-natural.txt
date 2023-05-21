@@ -1,0 +1,37 @@
+Consider this domain description:
+
+"The gripper-strips domain is a simple environment in which an agent named Robby, equipped with a gripper, can move around a set of rooms and pick up and drop off balls located in those rooms. The domain involves reasoning about the location of Robby, balls, and the gripper, and ensuring that the gripper is free when it needs to pick up a ball, and that it carries a ball when it needs to drop it off.
+
+Available actions:
+There are three actions available in this domain: move, pick, and drop.
+
+    The move action allows Robby to move from one room to another, given that he is currently located in the source room and the destination room is specified as a parameter. The effect of this action is to update Robby's location to the new room.
+    The pick action allows Robby to pick up a ball located in a particular room, given that he is currently located in that room, the gripper is free, and the ball is not already being carried by the gripper. The effect of this action is to update the state to indicate that the gripper is now carrying the ball and the ball is no longer in the room.
+    The drop action allows Robby to drop off a ball that he is currently carrying, given that he is located in the room where the ball is to be dropped off and the ball is being carried by the gripper. The effect of this action is to update the state to indicate that the gripper is no longer carrying the ball and the ball is now located in the specified room.
+
+Restrictions over actions:
+The actions are subject to certain restrictions that ensure that the domain is consistent and that the actions can be executed safely:
+
+    The move action can only be executed if Robby is currently located in the source room and the destination room is specified as a parameter.
+    The pick action can only be executed if Robby is located in the same room as the ball, the gripper is free, and the ball is not already being carried by the gripper.
+    The drop action can only be executed if Robby is located in the same room as the ball is to be dropped off, the gripper is carrying the ball, and the ball is not already in the room."
+
+
+And this problem associated to it: 
+
+"Objects:
+The problem instance involves the following objects: two rooms named "rooma" and "roomb", three balls named "ball1", "ball2", and "ball3", and two grippers named "left" and "right".
+
+Initial state:
+The initial state of the problem instance includes:
+
+    Robby is located in rooma.
+    Both grippers are free.
+    All three balls are located in rooma.
+    The grippers are present, as indicated by the predicates (gripper left) and (gripper right).
+
+Goals:
+The goal of the problem instance is to move all three balls to room roomb. The problem requires Robby to reason about the location of the balls and the rooms, and plan a sequence of actions that will move the balls to the desired location while respecting the restrictions over the actions."
+
+The resulting planning task is unsolvable because some domain actions are missing some effects.
+Can you provide the same domain description in natural language, but including new action effects that will make the task solvable? Be as concise as possible.

@@ -1,0 +1,40 @@
+Consider this domain description:
+
+"The gripper-strips domain is a simple domain for a robot named Robby that can move around in different rooms and pick up and drop off balls using its gripper arm. The domain is modeled in PDDL with six predicates: room, ball, gripper, at-robby, at, free, and carry. The actions available in this domain are move, pick, and drop.
+
+Available actions:
+
+    move: This action allows Robby to move from one room to another, provided that it is already located in the starting room and both rooms are defined in the domain. The action has two parameters, from and to, which represent the starting and ending rooms, respectively. The effect of this action is to update Robby's location to the new room and remove its presence from the old room.
+
+    pick: This action allows Robby to pick up a ball using its gripper arm. The action has three parameters: obj, room, and gripper, which represent the ball to be picked up, the room where it is located, and Robby's gripper arm, respectively. The action's preconditions require that the ball and the gripper are free, and that Robby is located in the same room as the ball. The effect of this action is to update the state of the ball to be carried by the gripper and to remove its presence from the room. Additionally, the gripper is no longer free.
+
+    drop: This action allows Robby to drop a ball that it is carrying using its gripper arm. The action has three parameters: obj, room, and gripper, which represent the ball to be dropped, the room where it should be dropped, and Robby's gripper arm, respectively. The action's preconditions require that the ball is being carried by the gripper and that Robby is located in the same room where the ball should be dropped. The effect of this action is to update the state of the ball to be located in the new room and remove its presence from the gripper. Additionally, the gripper is now free.
+
+Restrictions over actions:
+The actions in this domain are relatively simple and have only a few restrictions:
+
+    Robby must be located in the starting room in order to execute the move action.
+    The ball and gripper must be free in order to execute the pick action.
+    The ball must be carried by the gripper in order to execute the drop action.
+    All actions are defined in a purely deterministic way and do not involve any probabilistic or nondeterministic effects."
+
+
+And this problem associated to it: 
+
+"Objects:
+The problem instance defines six objects: four balls numbered from 1 to 4, two rooms named "rooma" and "roomb", and two grippers named "left" and "right". These objects are defined in the context of the gripper-strips domain.
+
+Initial state:
+The initial state of the problem instance includes various assertions about the state of the objects and predicates in the domain. Specifically, it states that:
+
+    There are two rooms named "rooma" and "roomb".
+    There are four balls numbered from 1 to 4.
+    Robby is located in "rooma".
+    Both grippers, "left" and "right", are free.
+    Each ball is located in "rooma", with ball4, ball3, and ball1 all present in that room.
+    The gripper arms are also defined, with "left" and "right" being the two grippers available to Robby.
+
+Goals:
+The goal of the problem instance is to move all four balls from "rooma" to "roomb". Specifically, the goal predicate requires that each ball is located in "roomb". Therefore, the solution to this problem instance would be a sequence of actions that achieves this goal while respecting the preconditions and effects of the actions in the gripper-strips domain."
+
+The resulting planning task is unsolvable due to an incomplete initial state description. Can you provide an alternative initial state in natural language from which the goals are achievable? That state must not include the goals directly. Be as concise as possible.

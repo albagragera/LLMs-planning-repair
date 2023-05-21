@@ -1,0 +1,17 @@
+This domain models a barman who can manipulate various objects, including containers, dispensers, shakers, cocktails, and shots. The barman can perform several actions to change the state of the objects, such as grasping, leaving, filling, emptying, cleaning, and pouring.
+
+The domain contains several predicates, including ontable, holding, handempty, empty, contains, clean, used, dispenses, shaker-empty-level, shaker-level, next, unshaked, shaked, cocktail-part1, and cocktail-part2. These predicates represent the state of the objects in the domain.
+
+To make the planning task solvable, the following effects need to be added to the actions:
+
+    grasp: the barman is holding the container
+    leave: the container is on the table and the hand is empty
+    fill-shot: the shot glass is filled with the ingredient and the dispenser is empty
+    refill-shot: the shot glass is refilled with the ingredient and the dispenser is not empty
+    empty-shot: the shot glass is empty
+    clean-shot: the shot glass is clean and not used
+    pour-shot-to-clean-shaker: the shaker is filled with the shot glass contents and is clean
+    pour-shot-to-used-shaker: the shaker is filled with the shot glass contents and has been used to make a cocktail
+    empty-shaker: the shaker is empty, unshaked, and shaker-empty-level is set to 1
+
+With these new effects, the planning task becomes solvable.

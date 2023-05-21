@@ -1,0 +1,3 @@
+An alternative initial state that makes the goals achievable could be:
+
+Ball2 is located in "roomb" and all other balls are located in "rooma".

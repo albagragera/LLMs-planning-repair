@@ -1,0 +1,106 @@
+GRIPPER
+
+p1
+In this alternative initial state, the initial locations of ball1 and ball2 have been swapped, so that ball2 is initially in rooma and ball1 is initially in roomb. All other initial state conditions remain the same. With this modified initial state, the goal of having ball2 in roomb and ball1 in roomb can be achieved by first picking up ball2 using a free gripper, moving to roomb, and then dropping ball2. Finally, ball1 can be picked up using the same gripper and then dropped off in roomb.
+
+p2
+This initial state adds the information that both grippers are initially free, which is required to achieve the goals of moving the balls from roomb to rooma. Now, the planner can use the pick action to pick up one of the balls with one of the grippers, move to rooma with the move action, drop the ball in rooma with the drop action, and then repeat the process with the other ball and the other gripper.
+
+p3
+This initial state includes all the information from the previous initial state, plus additional information to make the goals achievable. The additional information is that none of the balls are initially located in the roomb room. This makes it possible for Robby to move the balls to the roomb room using the pick and drop actions.
+
+p4
+This initial state assumes that Robby is already holding two balls (ball1 with the left gripper and ball2 with the right gripper) and is located in rooma. The third ball, ball3, is located in rooma as well.
+
+With this additional information, the goals can be achieved by performing the following actions in order:
+
+    Move Robby to rooma with the two balls.
+    Drop ball1 in rooma.
+    Move Robby to roomb.
+    Drop ball2 in roomb.
+    Pick up ball3 with either gripper.
+    Move Robby back to rooma with ball3.
+    Drop ball3 in rooma.
+
+Note that this initial state does not include the goals directly, but includes information about Robby's location and the objects he is already holding. This allows the goals to be achieved by performing the necessary actions in sequence.
+
+p5
+In this alternative initial state, we added the fact that ball2 is in rooma and ball1 is in roomb. This makes it possible for Robby to pick up ball2 from rooma, move to roomb, and drop it there to achieve the goal. Note that the goal still does not include ball2 directly, but rather it requires that ball4, ball3, and ball2 are in roomb while ball1 is not.
+
+_________________
+
+BLOCKS
+
+p1
+The main differences between this and the original initial state are:
+
+    Block b1 is on top of block b3 (on b1 b3), so there is a clear block (b1) available to put block b2 on top of.
+    Blocks b1 and b2 are now clear, so the robot arm can pick up block b2 from the table.
+
+With this initial state, the robot arm can pick up block b2, put it on top of block b1, and then pick up block b3 and put it on top of block b1 to achieve the goal of having block b1 on top of block b2 and block b3 on top of block b1.
+
+p2
+In this initial state, all blocks are on the table, and all blocks are clear, indicating that they are not being supported by any other block. This complete initial state allows for the goals to be achievable through a sequence of actions that involve picking up blocks, putting them down, stacking them, and unstacking them, as defined in the domain.
+
+p3
+In this initial state, block b4 is on top of block b3, which was not specified in the original incomplete initial state. Additionally, block b1 is clear, and the agent's hand is empty. This state satisfies all the preconditions for the actions in the blocks domain, and therefore the goals can be achieved by applying the appropriate sequence of actions.
+
+p4
+In this alternative initial state, the predicate "(on b1 b4)" is added, which means that block b1 is on top of block b4. This additional predicate connects the blocks in such a way that it is possible to achieve the desired goal state of having block b1 on top of block b3, and block b3 on top of block b4.
+
+p5
+This initial state includes all the predicates from the previous one, but adds three additional predicates: ontable b1, clear b3, and handempty. With this additional information, the problem is solvable because the robot hand is initially empty and b1 and b4 are already stacked on top of each other, and b2 and b3 are also stacked on top of each other.
+
+With this initial state, the robot can pick up b3, move it to the table, then pick up b1, move it on top of b3, pick up b4, move it on top of b2, and finally put down b1 on top of b4. This sequence of actions satisfies the goal state where b1 is on top of b3 and b4 is on top of b2.
+
+_____________________________________
+
+TRANSPORT
+
+p1
+The initial state now includes the package-1 at city-loc-1 and the truck-1 at city-loc-1, with enough capacity to carry the package. The goals remain the same: to have the package-1 at city-loc-2.
+
+p2
+In this alternative initial state, the package is not initially at city-loc-1 and it is not initially in the truck-1. The truck-1, however, is initially at city-loc-1, which enables it to drive to city-loc-3 where the package is located and pick it up. This initial state, together with the given actions and goals, allows for a valid plan to be generated.
+
+p3
+-No text provided
+
+p4
+This initial state specifies that both trucks are located at their respective starting locations (truck-1 at city-loc-2 and truck-2 at city-loc-3), each carrying one of the two packages, and with enough remaining capacity to complete the transport task. This allows for the achievement of the goals, as the trucks can simply transport the packages to their desired locations (city-loc-1).
+
+p5
+-No text provided
+
+
+_______________________________________
+
+BARMAN
+
+p1
+In this modified initial state, we have added facts such as (contains cocktail1 ingredient1) and (contains cocktail1 ingredient2) to indicate that the cocktail already contains the required ingredients. We have also added facts such as (used shaker1), (handright right), (handleft left), and (at shaker1 left) to specify that the shaker has been used, and it is currently in the left hand of the bartender. Similarly, we have added facts such as (at shot1 right), (at dispenser1 right), and (at dispenser2 left) to specify the location of the shot and the dispensers. Finally, we have added (dispensed dispenser1) and (dispensed dispenser2) to indicate that the dispensers have been used, and (mixed shaker1) to specify that the shaker has been mixed.
+
+With this modified initial state, the goal of (contains shot1 cocktail1) can be achieved through a sequence of actions, and the planning task becomes solvable.
+
+p2
+In this initial state, we have added the following fluents to ensure that the goal is achievable:
+
+    (contains cocktail1): The cocktail is already prepared and ready to have the shot added to it.
+    (ingredient-available ingredient1): The ingredient required for the cocktail part 1 is available.
+    (ingredient-available ingredient3): The ingredient required for the cocktail part 2 is available.
+    (not (contains shot1 cocktail1)): The shot has not yet been added to the cocktail.
+
+With this initial state, it is possible to achieve the goal of (contains shot1 cocktail1) by pouring the shot into the cocktail.
+
+p3
+This initial state is the same as the original one, with the addition of three negative literals that indicate that the shot is not yet in the cocktail and the cocktail is not yet composed of the specific ingredients listed in the goal. This ensures that the goals cannot be achieved directly from the initial state, but they can be achieved through a sequence of actions that adds the shot to the cocktail and combines the two specific ingredients.
+
+p4
+In this alternative initial state, we have added negative literals that ensure that the hand is not empty and that the right hand is being used (i.e., not the left hand). We have also added negative literals that ensure that the shaker is not already full or empty at each level. With these additional negative literals, we can add actions to fill the shaker with the appropriate ingredients and shots, shake it, and pour it into glasses to achieve the goal.
+
+
+p5
+In this new initial state, we have added the lines (contains cocktail1 cocktail2), (contains ingredient3 cocktail1) and (contains ingredient5 cocktail2) which indicate that cocktail1 contains ingredient3 and cocktail2 contains ingredient5, and that both cocktails are mixed together in the shaker. With this new information, the goals specified in the original problem definition can be achieved.
+
+
+

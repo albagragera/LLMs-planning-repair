@@ -1,0 +1,43 @@
+Consider this domain description:
+
+"Summary of the domain:
+The blocks world is a classic problem in artificial intelligence that involves moving blocks around on a table. In this domain, there are several blocks of the same type, and the goal is to arrange them in a certain way. The blocks can be on top of one another or on the table, and the actions available are pick-up, put-down, stack, and unstack.
+
+Available actions:
+There are four actions available in this domain:
+
+    pick-up: To perform this action, the block needs to be clear (i.e., there are no other blocks on top of it) and on the table. After the action is executed, the block is no longer on the table, it is no longer clear, and the agent's hand is no longer empty.
+    put-down: This action allows the agent to put a block that is being held in their hand back onto the table. To perform this action, the agent needs to be holding a block. After the action is executed, the agent's hand is empty, the block is on the table, it is clear, and it is not being held by the agent anymore.
+    stack: This action allows the agent to place a block that is being held in their hand on top of another block that is clear. To perform this action, the agent needs to be holding a block and the block they want to place it on needs to be clear. After the action is executed, the block that was being held is no longer being held, it is no longer clear, and it is on top of the other block.
+    unstack: This action allows the agent to pick up a block that is on top of another block and make it be held by the agent's hand. To perform this action, the block that is being picked up needs to be on top of another block, the block it is on needs to be clear, and the agent's hand needs to be empty. After the action is executed, the block that was on top of the other block is no longer on top of it, it is being held by the agent, it is not clear anymore, and the block it was on is clear.
+
+Restrictions over actions:
+The actions have some restrictions that need to be fulfilled before they can be executed:
+
+    The pick-up action requires that the block is clear, on the table, and the agent's hand is empty.
+    The put-down action requires that the agent is holding a block.
+    The stack action requires that the block being held is being placed on top of a clear block.
+    The unstack action requires that the block being picked up is on top of another block that is clear, and the agent's hand is empty. Additionally, the block being picked up is no longer on top of the other block after the action is executed."
+
+
+And this problem associated to it: 
+
+"Objects:
+The problem instance involves four blocks, denoted by the names b1, b2, b3, and b4.
+
+Initial state:
+The initial state of the problem instance is defined by the following conditions:
+
+    The agent's hand is empty.
+    Block b1 is on the table.
+    Block b2 is on the table.
+    Block b3 is on top of block b2.
+    Block b4 is on top of block b3.
+    Block b1 is clear (i.e., there are no other blocks on top of it).
+    Block b4 is clear.
+
+Goals:
+The goal is to rearrange the blocks such that block b1 is on top of block b3, and block b3 is on top of block b4."
+
+The resulting planning task is unsolvable because some domain actions are missing some effects.
+Can you provide the same domain description in natural language, but including new action effects that will make the task solvable? Be as concise as possible.

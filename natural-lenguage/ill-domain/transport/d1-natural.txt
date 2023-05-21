@@ -1,0 +1,35 @@
+Consider this domain description:
+
+"The "transport" domain in PDDL is used to model a transportation problem where there are vehicles and packages that need to be transported between different locations. The domain defines the relationships between locations, vehicles, and packages, and provides a set of actions that can be performed to move packages from one location to another using vehicles.
+
+There are three actions defined in the domain:
+
+    Drive: It takes as input the vehicle and the source and destination locations and ensures that the vehicle is at the source location and that there is a road connecting the two locations. After the action is executed, the vehicle is not anymore in the source location, and the total cost of the transportation will be increased by the length of the road.
+
+    Pick-up: It takes as input the vehicle, the location where the vehicle is located, the package to be picked up, and the current and next capacity of the vehicle. The action ensures that the vehicle is at the location where the package is, that the vehicle has enough capacity to pick up the package, and that the capacity of the vehicle is updated after the package is picked up. After the action is executed, the package will no longer be at its previous location, and the capacity of the vehicle will be decreased by the amount of capacity required to pick up the package.
+
+    Drop: This action allows a vehicle to drop a package at a location. It takes as input the vehicle, the location where the package is to be dropped, the package to be dropped, and the current and next capacity of the vehicle. The action ensures that the vehicle is at the location where the package is to be dropped, that the package is in the vehicle, and that the capacity of the vehicle is updated after the package is dropped. After the action is executed, the package will be at the new location, and the capacity of the vehicle will be increased by the amount of capacity required to drop the package.
+
+The actions in the transport domain have certain restrictions:
+
+    Drive: The drive action can only be executed if the vehicle is at the source location and there is a road connecting the source and destination locations.
+
+    Pick-up: The pick-up action can only be executed if the vehicle is at the location where the package is, the package is at that location, and the vehicle has enough capacity to pick up the package.
+
+    Drop: The drop action can only be executed if the vehicle is at the location where the package is to be dropped, the package is in the vehicle, and the vehicle has enough capacity to drop the package."
+
+
+And this problem associated to it: 
+
+"The problem instance involves three cities. There is one truck and one package. The problem also defines five capacity-number objects, capacity-0 through capacity-4.
+
+    Initial state: The initial state of the problem instance is as follows:
+        The capacity-predecessor predicate is initialized with the capacity-number objects to represent their relationship.
+        The road predicate is defined to describe the roads between the cities.
+        The at predicate is used to represent the initial locations of the package and the truck. The package is initially located at city-loc-1, and the truck is initially located at city-loc-3.
+        The capacity predicate is used to represent the truck's initial capacity, which is set to capacity-4.
+
+The goal of this problem instance is to transport the package from city-loc-1 to city-loc-2. This is represented by the at predicate with package-1 located at city-loc-2."
+
+The resulting planning task is unsolvable because some domain actions are missing some effects.
+Can you provide the same domain description in natural language, but including new action effects that will make the task solvable? Be as concise as possible.

@@ -1,0 +1,182 @@
+GRIPPER
+d1
+predicate: at
+action: drop
+
+The new empty-handed and not-at predicates are used to keep track of whether the gripper is empty-handed or not, and whether the ball is not at a certain location.
+
+The pick action now has an additional effect (not-at ?obj ?room) to indicate that the ball is no longer at its original location after it has been picked up.
+
+The drop action now has additional effects (empty-handed ?gripper) to indicate that the gripper is now empty-handed after the ball has been dropped, and (at ?obj ?room) to indicate that the ball is now at its new location after it has been dropped.
+
+With these additional effects, the planning task should now be solvable.
+
+
+d2
+predicate: at-robby
+action: move
+
+The changes made to this domain include adding additional effects to the "pick" and "drop" actions, which were previously missing. Specifically, the "pick" action now includes an effect to remove the "at" predicate for the picked-up object in addition to its previous effects. The "drop" action now includes an effect to remove the "carry" predicate in addition to its previous effects. These changes make it possible for the planner to correctly reason about the state of the environment and create a plan that can move the balls to the desired room in the provided problem instance.
+
+
+d3
+predicate: free
+action: drop
+
+In this version of the domain, two additional predicates are introduced: "not-at" and "not-carrying". These predicates are used to indicate that an object is not in a certain location or is not being carried by a certain gripper.
+
+The effects of the "move" action are updated to include a "forall" statement that checks each ball in the "from" room and updates its location to the "to" room if it was previously in the "from" room and not being carried by the gripper.
+
+The effects of the "pick" action are updated to include a "not-at" effect to indicate that the ball is no longer in the room where it was picked up.
+
+The effects of the "drop" action are updated to include a "not-carrying" effect to indicate that the gripper is no longer carrying the ball.
+
+With these additional effects, the planning task should now be solvable.
+
+
+d4
+predicate: carry
+action: pick-up
+
+I've added a new action called put-down that has the same preconditions as drop, but with an additional effect of setting free ?gripper. This change ensures that the gripper will be free after putting down the ball, allowing the robot to pick up another ball if necessary. With this modification, the planning task associated with the problem instance should now be solvable.
+
+
+d5
+predicate: at-robby
+action: move
+
+The modifications include adding the (at-robby ?to) effect in the move action, which ensures that Robby is in the new room after the move. Additionally, the pick and drop actions now include the (not (at-robby ?room)) effect, which ensures that Robby is no longer at the room where the action was performed. With these modifications, the resulting planning task should be solvable.
+
+___________________________________________
+
+BLOCKS
+
+d3
+predicate: on
+action: stack
+
+The changes made in this domain are in the effects of the "stack" and "unstack" actions, which were previously missing some effects that make the planning task unsolvable. Specifically, in the "stack" action, the effect (on ?x ?y) has been added, which indicates that block ?x is now on top of block ?y. In the "unstack" action, the effect (not (on ?x ?y)) has been added, which indicates that block ?x is no longer on top of block ?y.
+
+With these modifications, the planning task using this domain can be solved.
+
+
+d4
+predicate: holding
+action: pick-up
+
+The modifications to this STRIPS version of the blocks domain include adding the ontable predicate to the effects of the stack and unstack actions to ensure that when a block is placed on top of another, the block it was previously on is also on the table.
+
+With these modifications, the planning task defined in the previous problem instance should now be solvable using this STRIPS version of the blocks domain.
+
+
+d5
+predicate: clear
+action: unstack
+
+In this updated version of the "blocks" domain, I have included additional effects in the "pick-up", "put-down", "stack", and "unstack" actions to ensure that the resulting planning task is solvable. Specifically, after an action that changes the state of the world, the effects of each action now include a "forall" condition that iterates over all the blocks and ensures that any block that is no longer clear or no longer on top of another block is properly updated.
+
+These additional effects ensure that the blocks are always in a valid configuration and prevent any unintended block stacking or overlaps that might make the planning task unsolvable.
+
+
+d7
+predicate: holding
+action: unstack
+
+The difference in this version is that the :typing keyword is not included and each action has been modified to include the effect (on-table ?x) after putting a block down. This new predicate indicates that a block is now on the table and can be used as a precondition for other actions that require blocks to be on the table.
+
+
+d10
+predicate: clear
+action: put-down
+
+The additional effects for each action ensure that the blocks world rules are maintained at all times, making it possible to solve the planning task. Specifically, for each action, we add a forall expression that iterates over all the blocks and ensures that their properties are updated correctly based on the action being taken.
+
+_____________________________________
+
+TRANSPORT
+
+d1
+predicate: in
+action: pick-up
+
+The changes to the domain specification are minor, just replacing :action-costs with :strips in the requirements and removing the :functions section (since we're not using action costs anymore). The main difference is in the action effects: the pick-up action now has an additional effect (in ?p ?v), which adds the fact that the package is in the truck after it is picked up, and the drop action has no changes. These changes ensure that the planning task is solvable.
+
+
+d2
+predicate: at
+action: drive
+
+The main difference here is that the capacity and capacity-predecessor predicates have been removed, and a new empty predicate has been introduced to keep track of whether the vehicle is empty or not. The pick-up and drop actions now have an effect that sets the empty predicate accordingly. With these modifications, the planning task described in the previous problem instance should now be solvable.
+
+
+d5
+predicate: at 
+action: drop
+
+The modifications are the inclusion of two new predicates: available, which denotes whether a package is available to be picked up, and two new actions: load and unload.
+
+The load action allows a truck to load a package and make it unavailable for pickup by other trucks. The unload action allows a truck to unload a package, making it available for pickup by other trucks. These new actions and predicates resolve the issue of unsolvability in the original problem instance.
+
+
+d7
+predicate: capacity
+action: drop
+
+We have added new effects to the move action that update the locations of objects in the truck, and added a new predicate in to track which objects are inside a truck. We have also added new actions load, unload, pickup, and dropoff that allow the truck to interact with packages.
+
+With these new effects, the provided problem instance can now be solved using classical STRIPS planning.
+
+
+d8
+predicate: capacity
+action: pick-up
+
+
+In the pick-up action, the effect (not (has none)) has been added to indicate that the robot is no longer empty-handed after picking up an item.
+
+In the drop-off action, the effect (goal ?x) has been added to mark the item as having been delivered to its goal location.
+
+With these additional effects, the planning task should be solvable.
+
+
+_______________________________________
+
+BARMAN
+
+d2
+predicate: contains
+action: fill-shot
+
+In this modified domain, I added the effects required for actions pickup, putdown, pour-into-shaker, pour-from-shaker, dispense, mix, and pour-shot to change the state of the world appropriately. With these changes, the original planning task should now be solvable.
+
+
+d4
+predicate: used
+action: fill-shot
+
+I have added new effects to the actions pickup, putdown, empty-container, and fill-shaker to maintain the preconditions for the pour action to work. Specifically, the pickup and putdown actions now also set the dirty or clean predicates on the object, respectively. The empty-container action now removes all items from the container. And the fill-shaker action now sets the dirty predicate on the shaker.
+
+With these changes, the planning task should now be solvable.
+
+
+d5
+predicate: shaked
+action: shake
+
+Notice that we added the predicates clean and dirty to distinguish between clean
+
+
+d6
+predicate: clean
+action: clean-shot
+
+In this domain, the actions pick-up, put-down, pour, fill, clean-shaker, and clean-shot have been defined. The pour action has been modified to add an effect that updates the level of the shaker, and the fill action has been modified to add an effect that marks the shaker as non-empty and clean. The clean-shaker and clean-shot actions have also been defined to clean dirty objects.
+
+
+d7
+predicate: handempty
+action: leave
+
+I added a fill-shaker action to fill the shaker with an ingredient, and modified the pour-shot action to add the effect of adding the shot to a cocktail.
+
+

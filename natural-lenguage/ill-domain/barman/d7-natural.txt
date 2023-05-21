@@ -1,0 +1,41 @@
+Consider this domain description:
+
+"This PDDL domain models a barman who can manipulate several objects, including containers, dispensers, shakers, cocktails, and shots. The domain contains several predicates, which represent the state of the objects in the domain, and several actions, which the barman can perform to change the state of the objects.
+
+The predicates include ontable, which specifies whether a container is on the table; holding, which specifies whether a hand is holding a container; handempty, which specifies whether a hand is empty; empty, which specifies whether a container is empty; contains, which specifies whether a container contains a beverage; clean, which specifies whether a container is clean; used, which specifies whether a container has been used to make a particular beverage; dispenses, which specifies whether a dispenser dispenses a particular ingredient; shaker-empty-level and shaker-level, which specify the empty and filled levels of a shaker, respectively; next, which specifies the order of levels in a shaker; unshaked and shaked, which specify whether a shaker has been shaken or not, respectively; cocktail-part1 and cocktail-part2, which specify the ingredients in a cocktail.
+
+The actions include grasp, which enables the barman to grasp a container; leave, which enables the barman to leave a container on the table; fill-shot, which enables the barman to fill a shot glass with an ingredient from a dispenser; refill-shot, which enables the barman to refill a shot glass with an ingredient from a dispenser; empty-shot, which enables the barman to empty the contents of a shot glass; clean-shot, which enables the barman to clean a shot glass that has been used to make a beverage; pour-shot-to-clean-shaker and pour-shot-to-used-shaker, which enable the barman to pour the contents of a shot glass into a shaker that is either clean or has already been used to make a beverage, respectively; empty-shaker, which enables the barman to empty the contents of a shaker after it has been used to make a cocktail."
+
+
+And this problem associated to it: 
+
+"Objects:
+    shaker1, a shaker
+    left and right, two hands
+    shot1, shot2, and shot3, three different types of shots
+    ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, and ingredient6, six different types of ingredients
+    cocktail1, cocktail2, and cocktail3, three different cocktails
+    dispenser1, dispenser2, dispenser3, dispenser4, dispenser5, and dispenser6, six dispensers
+    l0, l1, and l2, three different levels
+
+Initial State:
+The initial state of the problem is defined as follows:
+
+    Shaker1 is on the table
+    Shot1, Shot2, and Shot3 are on the table
+    Dispensers 1-6 dispense Ingredient1-6 respectively
+    Shaker1, Shot1, Shot2, and Shot3 are all clean and empty
+    Both hands are empty
+    Shaker1 has a level of 0 and shaker-empty-level is also set to 0
+    Levels l0 and l1 are set, and l1 is next to l0
+    Cocktails 1-3 contain specific ingredients based on cocktail-part1 and cocktail-part2 predicates
+
+Goals:
+The goal of the problem is to create a specific set of cocktails, as defined in the (:goal) statement:
+
+    Cocktail2 contains Shot1
+    Cocktail1 contains Shot2
+    Cocktail3 contains Shot3"
+
+The resulting planning task is unsolvable because some domain actions are missing some effects.
+Can you provide the same domain description in natural language, but including new action effects that will make the task solvable? Be as concise as possible.

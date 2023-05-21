@@ -1,0 +1,1 @@
+An alternative initial state could be: Block b1 is on top of block b2, block b3 is on the table and clear, and block b4 is clear and on the table.
